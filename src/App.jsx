@@ -18,12 +18,12 @@ function App() {
     const [query, setQuery] = useState('');
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedImage, setSelectedImage] = useState(null);
-
+    const apiKey = 'u1pYBtTMwptTTgHzMmIFHs3Gsp7PkMcfyNKZkU_OJJk';
 
     async function fetchImages(query, pageNum) {
         try {
             setLoading(true);
-            const apiKey = 'u1pYBtTMwptTTgHzMmIFHs3Gsp7PkMcfyNKZkU_OJJk';
+            
             const params = {
                 client_id: apiKey,
                 query: query,
@@ -65,8 +65,6 @@ function App() {
     useEffect(() => {
         if (query !== '') {
             fetchImages(query, page);
-            setPage(page);
-            setImages([]);
             setHasMoreImages(true);
         }
         if (page > 1) {
@@ -78,6 +76,8 @@ function App() {
 
     const handleSearch = (query) => {
         setQuery(query);
+        setPage(1);
+        setImages([]);
     };
 
     const loadMore = () => {
