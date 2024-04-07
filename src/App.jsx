@@ -64,13 +64,16 @@ function App() {
 
     useEffect(() => {
         if (query !== '') {
-            fetchImages(query, page);
-            setHasMoreImages(true);
+            setPage(1); 
+            fetchImages(query, 1); 
         }
+    }, [query]);
+
+    useEffect(() => {
         if (page > 1) {
-            fetchImages(query, page);
+            fetchImages(query, page); 
         }
-    }, [query,page]);
+    }, [query, page]);
 
     
 
