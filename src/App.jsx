@@ -63,16 +63,8 @@ function App() {
     }
 
     useEffect(() => {
-        if (query !== '') {
-            setPage(1); 
-            fetchImages(query, 1); 
-        }
-    }, [query]);
-
-    useEffect(() => {
-        if (page > 1) {
-            fetchImages(query, page); 
-        }
+    if (!query ) return; 
+            fetchImages(query, page);
     }, [query, page]);
 
     
